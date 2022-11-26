@@ -5,6 +5,7 @@ from .db import db
 bp = Blueprint("auth", __name__)
 
 def get_servicetitan_config(authorization):
+    print(authorization)
     json = (
       pd
       .read_sql(
@@ -47,4 +48,5 @@ def database_config():
         """, db.engine)
       .to_json(orient="records",default_handler=str)
     )
+    print(json)
     return json
