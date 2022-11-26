@@ -62,7 +62,7 @@ def servicetitan_reports():
     print(response)
     return Response(response, status=200)
 
-@bp.route("/", methods=["GET","POST"])
+@bp.route("/sync", methods=["GET","POST"])
 def sync_report():
   if request.method == "POST":
     body = request.get_json()
