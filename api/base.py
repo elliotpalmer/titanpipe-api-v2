@@ -27,5 +27,6 @@ def health():
 
 @bp.route("/dbtest")
 def dbtest():
-    df = pd.read_sql("select * from test_table", db.engine)
-    return Response(df.to_json(orient="records"), status=200)
+    df = pd.read_sql("select * from public.servicetitan_config", db.engine)
+    data = df.to_json(orient="records",default_handler=str)
+    return Response(data, status=200)

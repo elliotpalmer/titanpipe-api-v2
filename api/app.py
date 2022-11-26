@@ -13,6 +13,8 @@ load_dotenv()
 # Local Imports
 from .errors import errors
 from .base import bp as base_bp
+from .auth import bp as auth_bp
+from .reports import bp as reports_bp
 
 # Create Flask App
 app = Flask(__name__)
@@ -22,5 +24,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv('SQLALCHEMY_TRACK_MODIF
 # Register Blueprints
 app.register_blueprint(errors)
 app.register_blueprint(base_bp)
+app.register_blueprint(auth_bp, url_prefix="/auth")
+app.register_blueprint(reports_bp, url_prefix="/reports")
 
 
