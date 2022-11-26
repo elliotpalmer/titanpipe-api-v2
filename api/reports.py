@@ -62,8 +62,9 @@ def servicetitan_reports():
     print(response)
     return Response(response, status=200)
 
-@bp.route("/", methods=["POST"])
+@bp.route("/", methods=["GET","POST"])
 def sync_report():
+  if request.method == "POST":
     body = request.get_json()
     print(body)
     authorization = request.headers.get('Authorization')
@@ -80,3 +81,5 @@ def sync_report():
     response = upload_report_data_to_database(table_name, report_df, engine)
     print(response)
     return Response(response, status=200)
+  elif request.method == "GET":
+    return Response("GET", status=200)
