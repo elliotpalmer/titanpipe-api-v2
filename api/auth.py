@@ -27,7 +27,7 @@ def get_servicetitan_config(authorization):
 def servicetitan_config():
     authorization = request.headers.get('Authorization')
     json = get_servicetitan_config(authorization)
-    return Response(json, status=200)
+    return json
 
 @bp.route("/database/config")
 def database_config():
@@ -47,4 +47,4 @@ def database_config():
         """, db.engine)
       .to_json(orient="records",default_handler=str)
     )
-    return Response(json, status=200)
+    return json
