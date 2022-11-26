@@ -21,3 +21,7 @@ This is a [Flask](https://flask.palletsprojects.com/en/1.1.x/) app that serves a
 
 - Install Python requirements `pip install -r requirements.txt`
 - Start the server for development `python3 main.py`
+
+## Resources
+
+* https://towardsdatascience.com/flask-in-production-minimal-web-apis-2e0859736df
