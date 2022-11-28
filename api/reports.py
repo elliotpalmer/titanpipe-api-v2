@@ -117,14 +117,14 @@ def get_next_queued_report():
     return {
     "request_uuid": None,
     "request_config": None,
-    "has_more": queue_length > 1,
+    "has_more": queue_length > 0,
     "queue_count": queue_length
   }
   
   return {
     "request_uuid": result['request_uuid'][0],
     "request_config": result['request_config'][0],
-    "has_more": queue_length > 1,
+    "has_more": queue_length > 0,
     "queue_count": queue_length
   }
 
@@ -154,6 +154,7 @@ def run_next_report():
 
     if request_uuid is None:
       return json_response(status_=200, response={"success": True, "message": "No queued reports", "has_more": has_more, "queue_count": queue_count})
+
     set_queued_report_status(request_uuid, 'running')
     try:
       response = sync_report_data(request_config['authorization'], request_config)
